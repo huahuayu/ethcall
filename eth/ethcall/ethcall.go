@@ -43,7 +43,7 @@ func DeployEthcall(auth *bind.TransactOpts, backend bind.ContractBackend) (commo
 	if err != nil {
 		return common.Address{}, nil, nil, err
 	}
-	return address, tx, &Ethcall{EthcallCaller: EthcallCaller{contract: contract}, EthcallTransactor: EthcallTransactor{contract: contract}, EthcallFilterer: EthcallFilterer{contract: contract}}, nil
+	return address, tx, &Ethcall{EthcallCaller: EthcallCaller{Contract: contract}, EthcallTransactor: EthcallTransactor{contract: contract}, EthcallFilterer: EthcallFilterer{contract: contract}}, nil
 }
 
 // Ethcall is an auto generated Go binding around an Ethereum contract.
@@ -55,7 +55,7 @@ type Ethcall struct {
 
 // EthcallCaller is an auto generated read-only Go binding around an Ethereum contract.
 type EthcallCaller struct {
-	contract *bind.BoundContract // Generic contract wrapper for the low level calls
+	Contract *bind.BoundContract // Generic contract wrapper for the low level calls
 }
 
 // EthcallTransactor is an auto generated write-only Go binding around an Ethereum contract.
@@ -111,7 +111,7 @@ func NewEthcall(address common.Address, backend bind.ContractBackend) (*Ethcall,
 	if err != nil {
 		return nil, err
 	}
-	return &Ethcall{EthcallCaller: EthcallCaller{contract: contract}, EthcallTransactor: EthcallTransactor{contract: contract}, EthcallFilterer: EthcallFilterer{contract: contract}}, nil
+	return &Ethcall{EthcallCaller: EthcallCaller{Contract: contract}, EthcallTransactor: EthcallTransactor{contract: contract}, EthcallFilterer: EthcallFilterer{contract: contract}}, nil
 }
 
 // NewEthcallCaller creates a new read-only instance of Ethcall, bound to a specific deployed contract.
@@ -120,7 +120,7 @@ func NewEthcallCaller(address common.Address, caller bind.ContractCaller) (*Ethc
 	if err != nil {
 		return nil, err
 	}
-	return &EthcallCaller{contract: contract}, nil
+	return &EthcallCaller{Contract: contract}, nil
 }
 
 // NewEthcallTransactor creates a new write-only instance of Ethcall, bound to a specific deployed contract.
@@ -155,7 +155,7 @@ func bindEthcall(address common.Address, caller bind.ContractCaller, transactor 
 // returns, a slice of interfaces for anonymous returns and a struct for named
 // returns.
 func (_Ethcall *EthcallRaw) Call(opts *bind.CallOpts, result *[]interface{}, method string, params ...interface{}) error {
-	return _Ethcall.Contract.EthcallCaller.contract.Call(opts, result, method, params...)
+	return _Ethcall.Contract.EthcallCaller.Contract.Call(opts, result, method, params...)
 }
 
 // Transfer initiates a plain transaction to move funds to the contract, calling
@@ -174,7 +174,7 @@ func (_Ethcall *EthcallRaw) Transact(opts *bind.TransactOpts, method string, par
 // returns, a slice of interfaces for anonymous returns and a struct for named
 // returns.
 func (_Ethcall *EthcallCallerRaw) Call(opts *bind.CallOpts, result *[]interface{}, method string, params ...interface{}) error {
-	return _Ethcall.Contract.contract.Call(opts, result, method, params...)
+	return _Ethcall.Contract.Contract.Call(opts, result, method, params...)
 }
 
 // Transfer initiates a plain transaction to move funds to the contract, calling
@@ -193,7 +193,7 @@ func (_Ethcall *EthcallTransactorRaw) Transact(opts *bind.TransactOpts, method s
 // Solidity: function checkETHBalance() view returns(uint256)
 func (_Ethcall *EthcallCaller) CheckETHBalance(opts *bind.CallOpts) (*big.Int, error) {
 	var out []interface{}
-	err := _Ethcall.contract.Call(opts, &out, "checkETHBalance")
+	err := _Ethcall.Contract.Call(opts, &out, "checkETHBalance")
 
 	if err != nil {
 		return *new(*big.Int), err
