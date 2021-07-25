@@ -14,7 +14,7 @@ func main() {
 	time.Sleep(20 * time.Second)
 	sendEth()
 	sendEthBackSimulation() // simulation failed
-	sendEthBack() // but actually tx execution success
+	sendEthBack()           // but actually tx execution success
 }
 
 func sendEth() {
@@ -36,8 +36,8 @@ func sendEthBackSimulation() {
 	_, err := eth.Ethcall.SendETHBack(transactor, big.NewInt(1))
 	if err != nil {
 		fmt.Printf("sendEthBackSimulation error %s\n", err)
-	}else {
-		fmt.Printf("sendEthBackSimulation error %s\n", err)
+	} else {
+		fmt.Println("sendEthBackSimulation success!")
 	}
 }
 
